@@ -12,7 +12,7 @@ class SampleAppTwoUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testOne() {
+    func test01() {
         
         // Test will login a user with facebook then logout.
         let splash = SplashPageObject()
@@ -21,15 +21,16 @@ class SampleAppTwoUITests: XCTestCase {
         let settingsPage = SettingsPageObject()
         
         splash.continueWithFacebook()
-        
         facebookPage.loginUserWithEmail("justin.bonaccorso@MB.com", password: "Password1234")
+        NSThread.sleepForTimeInterval(1)
+        
         homePage.navigateToSettingsPage()
 
         NSThread.sleepForTimeInterval(1)
         settingsPage.continueWithLogout()
     }
     
-    func testTwo() {
+    func test02() {
         
         // Test will login a user with email then logout.
         let splash = SplashPageObject()
@@ -46,7 +47,7 @@ class SampleAppTwoUITests: XCTestCase {
         settingsPage.continueWithLogout()
     }
     
-    func testThree() {
+    func test03() {
         
         // Test will choose email login, back out and then continue with facebook login.
         let splashPage = SplashPageObject()
@@ -61,7 +62,7 @@ class SampleAppTwoUITests: XCTestCase {
         NSThread.sleepForTimeInterval(1)
     }
     
-    func testFour() {
+    func test04() {
         
         // Test will choose facebook login, back out and continue with email login.
         let splashPage = SplashPageObject()
@@ -76,7 +77,7 @@ class SampleAppTwoUITests: XCTestCase {
         NSThread.sleepForTimeInterval(1)
     }
 
-    func testFive() {
+    func test05() {
         
         // Test will choose email, enter credentials, back out and continue with facebook login, settings, logout.
         let splashPage = SplashPageObject()
@@ -100,9 +101,9 @@ class SampleAppTwoUITests: XCTestCase {
         settingsPage.continueWithLogout()
     }
     
-    func testSix() {
+    func test06() {
         
-        // Test will choose facebook login, back out and continue with email login then settings and logout.
+        // Test will choose facebook login, back out and continue with email login then settings, logout.
         let facebookPage = FacebookLoginPageObject()
         let splashPage = SplashPageObject()
         let emailPage = EmailLoginPageObject()
@@ -124,9 +125,9 @@ class SampleAppTwoUITests: XCTestCase {
         settingsPage.continueWithLogout()
     }
     
-    func testSeven() {
+    func test07() {
         
-        // Test will enter email credentials, press home, reopen and login.
+        // Test will enter email credentials, press home, reopen and login then settings, logout.
         let splashPage = SplashPageObject()
         let emailPage = EmailLoginPageObject()
         let homePage = HomePageObject()
@@ -151,9 +152,9 @@ class SampleAppTwoUITests: XCTestCase {
         settingsPage.continueWithLogout()
     }
     
-    func testEight() {
+    func test08() {
         
-        // Test will enter facebook credentials, press home, reopen and login
+        // Test will enter facebook credentials, press home, reopen and login then settings, logout.
         let splashPage = SplashPageObject()
         let homePage = HomePageObject()
         let settingsPage = SettingsPageObject()
@@ -180,7 +181,7 @@ class SampleAppTwoUITests: XCTestCase {
         settingsPage.continueWithLogout()
     }
     
-    func testNine() {
+    func test09() {
         // Test will choose email login, then tap back button.
         let splashPage = SplashPageObject()
         let emailPage = EmailLoginPageObject()
@@ -190,7 +191,7 @@ class SampleAppTwoUITests: XCTestCase {
         NSThread.sleepForTimeInterval(1)
     }
     
-    func testTen() {
+    func test10() {
         // Test will choose facebook login then tap back button.
         let splashPage = SplashPageObject()
         let facebookPage = FacebookLoginPageObject()
@@ -201,7 +202,7 @@ class SampleAppTwoUITests: XCTestCase {
     
     }
     
-    func testEleven() {
+    func test11() {
         
         // Test is written to FAIL at the 3rd step below.
         let splash = SplashPageObject()

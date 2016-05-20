@@ -3,14 +3,18 @@ import XCTest
 
 class SplashPageObject {
     
+    // MARK: Identify
     let facebookButton = XCUIApplication().buttons["connectWithFacebook"]
     let emailButton = XCUIApplication().buttons["continueWithEmail"]
-    
-    func continueWithFacebook() {
+
+    // MARK: Page Regressions
+    func continueWithFacebook() -> FacebookLoginPageObject {
         facebookButton.tap()
+        return FacebookLoginPageObject()
     }
     
-    func continueWithEmail() {
+    func continueWithEmail() -> EmailLoginPageObject {
         emailButton.tap()
+        return EmailLoginPageObject()
     }
 }

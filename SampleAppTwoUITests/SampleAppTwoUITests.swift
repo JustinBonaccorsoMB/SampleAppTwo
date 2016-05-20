@@ -1,216 +1,224 @@
 import XCTest
 
+struct UserModel {
+    static let email = "justin.bonaccorso@MB.com"
+    static let password = "Password1234"
+}
+
 class SampleAppTwoUITests: XCTestCase {
-        
+    
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
-        XCUIApplication().launch()
+        XCUIApplication().launch()        
     }
     
     override func tearDown() {
         super.tearDown()
     }
     
+    // Test will progress to email page then tap back button.
     func test01() {
         
-        // Test will login a user with facebook then logout.
-        let splash = SplashPageObject()
-        let facebookPage = FacebookLoginPageObject()
-        let homePage = HomePageObject()
-        let settingsPage = SettingsPageObject()
+        // Initiate the splash screen
+        let splashPage = SplashPageObject()
         
-        splash.continueWithFacebook()
-        facebookPage.loginUserWithEmail("justin.bonaccorso@MB.com", password: "Password1234")
-        NSThread.sleepForTimeInterval(1)
+        // Navigate to the Email page
+        let emailPage = splashPage.continueWithEmail()
         
-        homePage.navigateToSettingsPage()
-
+        // Navigate back to splash screen.
+        emailPage.navigateBack()
         NSThread.sleepForTimeInterval(1)
-        settingsPage.continueWithLogout()
     }
     
+    // Test will choose facebook login then tap back button.
     func test02() {
         
-        // Test will login a user with email then logout.
-        let splash = SplashPageObject()
-        let emailPage = EmailLoginPageObject()
-        let settingsPage = SettingsPageObject()
-        let homePage = HomePageObject()
+        // Initiate the splash screen
+        let splashPage = SplashPageObject()
         
-        splash.continueWithEmail()
-        emailPage.loginUserWithEmail("justin.bonaccorso@MB.com", password: "Password1234")
+        // Navigate to the email page
+        let facebookPage = splashPage.continueWithFacebook()
+        
+        // Navigate back to splash screen.
+        facebookPage.navigateBack()
+        NSThread.sleepForTimeInterval(1)
+    }
+    
+    // Test will login a user with facebook then settings, logout.
+    func test03() {
+    
+        // Initiate the splash screen
+        let splashPage = SplashPageObject()
+        
+        // Navigate to the facebook page
+        let facebookPage = splashPage.continueWithFacebook()
+        
+        // Input valid credentials
+        let homePage = facebookPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         NSThread.sleepForTimeInterval(1)
         
-        homePage.navigateToSettingsPage()
-        NSThread.sleepForTimeInterval(1)
+        // Navigate to settings and logout.
+        let settingsPage = homePage.navigateToSettingsPage()
         settingsPage.continueWithLogout()
     }
     
-    func test03() {
-        
-        // Test will choose email login, back out and then continue with facebook login.
-        let splashPage = SplashPageObject()
-        let emailPage = EmailLoginPageObject()
-        let facebookPage = FacebookLoginPageObject()
-        
-        splashPage.continueWithEmail()
-        emailPage.navigateToSplashPage()
-        splashPage.continueWithFacebook()
-        
-        facebookPage.loginUserWithEmail("Justin.Bonaccorso@MB.com", password: "Password1234")
-        NSThread.sleepForTimeInterval(1)
-    }
-    
+    // Test will login a user with email then settings, logout.
     func test04() {
         
-        // Test will choose facebook login, back out and continue with email login.
+        // Initiate the spash screen.
         let splashPage = SplashPageObject()
-        let emailPage = EmailLoginPageObject()
         
-        splashPage.continueWithFacebook()
-        emailPage.navigateToSplashPage()
-        splashPage.continueWithEmail()
-        NSThread.sleepForTimeInterval(1)
-
-        emailPage.loginUserWithEmail("Justin.Bonaccorso@MB.com", password: "Password1234")
-        NSThread.sleepForTimeInterval(1)
+        // Navigate to the Email page
+        let emailPage = splashPage.continueWithEmail()
+        
+        // Input valid email
+        let homePage = emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        
+        // Navigate to settings and logout.
+        let settingsPage = homePage.navigateToSettingsPage()
+        settingsPage.continueWithLogout()
     }
-
+    
+    // Test will choose email login, then back out and continue with facebook login.
     func test05() {
         
-        // Test will choose email, enter credentials, back out and continue with facebook login, settings, logout.
+        // Initiate the spash screen.
         let splashPage = SplashPageObject()
-        let emailPage = EmailLoginPageObject()
-        let facebookPage = FacebookLoginPageObject()
-        let settingsPage = SettingsPageObject()
-        let homePage = HomePageObject()
         
-        splashPage.continueWithEmail()
-        emailPage.enterCredentials("Justin.Bonaccorso@MB.com", password: "Password1234")
+        // Navigate to the Email page
+        let emailPage = splashPage.continueWithEmail()
+        
+        // Navigate back to splash screen.
+        emailPage.navigateBack()
+        
+        // Navigate to the facebook page
+        let facebookPage = splashPage.continueWithFacebook()
+        
+        // Input valid credentials
+        facebookPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
         NSThread.sleepForTimeInterval(1)
-        
-        emailPage.navigateToSplashPage()
-        splashPage.continueWithFacebook()
-        
-        facebookPage.loginUserWithEmail("Justin.Bonaccorso@MB.com", password: "Password1234")
-        NSThread.sleepForTimeInterval(1)
-        
-        homePage.navigateToSettingsPage()
-        NSThread.sleepForTimeInterval(1)
-        settingsPage.continueWithLogout()
     }
     
+    // Test will choose facebook login, then back out and continue with email login.
     func test06() {
         
-        // Test will choose facebook login, back out and continue with email login then settings, logout.
-        let facebookPage = FacebookLoginPageObject()
+        // Initiate the spash screen.
         let splashPage = SplashPageObject()
-        let emailPage = EmailLoginPageObject()
-        let homePage = HomePageObject()
-        let settingsPage = SettingsPageObject()
         
-        splashPage.continueWithFacebook()
-        NSThread.sleepForTimeInterval(2)
+        // Navigate to the facebook page
+        let facebookPage = splashPage.continueWithFacebook()
         
-        facebookPage.navigateToSplashPage()
+        // Navigate back to splash screen.
+        facebookPage.navigateBack()
         
-        splashPage.continueWithEmail()
-       
-        emailPage.loginUserWithEmail("Justin.Bonaccorso@MB.com", password: "Password1234")
-        NSThread.sleepForTimeInterval(1)
+        // Navigate to the Email page
+        let emailPage = splashPage.continueWithEmail()
         
-        homePage.navigateToSettingsPage()
-        NSThread.sleepForTimeInterval(1)
-        settingsPage.continueWithLogout()
+        // Input valid email
+        emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
     }
+
     
+    // Test will choose email, enter credentials, back out and continue with facebook login, settings, logout.
     func test07() {
         
-        // Test will enter email credentials, press home, reopen and login then settings, logout.
+        // Initiate the spash screen.
         let splashPage = SplashPageObject()
-        let emailPage = EmailLoginPageObject()
-        let homePage = HomePageObject()
-        let settingsPage = SettingsPageObject()
         
-        splashPage.continueWithEmail()
+        // Navigate to the Email page
+        let emailPage = splashPage.continueWithEmail()
         
-        XCTAssert(XCUIApplication().navigationBars.element.exists)
+        // Type user email
+        emailPage.typeUserName("Justin.Bonaccorso@MB.com")
         
-        XCUIDevice().pressButton(XCUIDeviceButton.Home)
-        XCUIApplication().launch()
+        // Navigate back to splash screen.
+        emailPage.navigateBack()
         
-        //Checks that navigationbar still there on second launch
-        XCTAssert(XCUIApplication().navigationBars.element.exists)
+        // Navigate to the facebook page
+        let facebookPage = splashPage.continueWithFacebook()
         
-        splashPage.continueWithEmail()
-        emailPage.loginUserWithEmail("Justin.Bonaccorso@MB.com", password: "Password1234")
-        NSThread.sleepForTimeInterval(1)
+        // Input valid credentials
+        let homePage = facebookPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
         
-        homePage.navigateToSettingsPage()
-        NSThread.sleepForTimeInterval(1)
+        // Navigate to settings and logout.
+        let settingsPage = homePage.navigateToSettingsPage()
         settingsPage.continueWithLogout()
     }
-    
+
+    // Test will choose facebook login, back out and continue with email login then settings, logout.
     func test08() {
         
-        // Test will enter facebook credentials, press home, reopen and login then settings, logout.
+        // Initiate the spash screen.
         let splashPage = SplashPageObject()
-        let homePage = HomePageObject()
-        let settingsPage = SettingsPageObject()
-        let facebookPage = FacebookLoginPageObject()
         
-        splashPage.continueWithFacebook()
+        // Navigate to the facebook page
+        let facebookPage = splashPage.continueWithFacebook()
         
-        XCTAssert(XCUIApplication().navigationBars.element.exists)
+        // Navigate back to splash screen.
+        facebookPage.navigateBack()
+        
+        // Navigate to the Email page
+        let emailPage = splashPage.continueWithEmail()
+
+        // Input valid email
+        let homePage = emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        
+        // Navigate to settings and logout.
+        let settingsPage = homePage.navigateToSettingsPage()
+        settingsPage.continueWithLogout()
+    }
+    
+    // Test will enter email credentials, press home, reopen and login then settings, logout.
+    func test09() {
+        
+        // Initiate the splash screen
+        var splashPage = SplashPageObject()
+        
+        // Navigate to the Email page
+        var emailPage = splashPage.continueWithEmail()
+        
+        // Enter email credentials
+        emailPage.typeUserName("Justin.Bonaccorso@MB.com")
+        
+        XCUIDevice().pressButton(XCUIDeviceButton.Home)
+        XCUIApplication().launch()
+
+        // Navigate to the Email page
+        splashPage = SplashPageObject()
+        emailPage = splashPage.continueWithEmail()
+        
+        // Input valid email
+        let homePage = emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        
+        // Navigate to settings and logout.
+        let settingsPage = homePage.navigateToSettingsPage()
+        settingsPage.continueWithLogout()
+    }
+    
+    // Test will enter facebook credentials, press home, reopen and login then settings, logout.
+    func test10() {
+        
+        // Initiate the splash screen.
+        var splashPage = SplashPageObject()
+        NSThread.sleepForTimeInterval(1)
+        
+        // Navigate to the facebook page.
+        var facebookPage = splashPage.continueWithFacebook()
         
         XCUIDevice().pressButton(XCUIDeviceButton.Home)
         XCUIApplication().launch()
         
-        //Checks that navigationbar still there on second launch
-        XCTAssert(XCUIApplication().navigationBars.element.exists)
+        // Navigate to the facebook page.
+        splashPage = SplashPageObject()
+        facebookPage = splashPage.continueWithFacebook()
         
-        splashPage.continueWithFacebook()
-        NSThread.sleepForTimeInterval(1)
+        // Input valid credentials
+        let homePage = facebookPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
         
-        facebookPage.loginUserWithEmail("Justin.Bonaccorso@MB.com", password: "Password1234")
-        NSThread.sleepForTimeInterval(1)
-        
-        homePage.navigateToSettingsPage()
+        // Navigate to settings and logout.
+        let settingsPage = homePage.navigateToSettingsPage()
         NSThread.sleepForTimeInterval(1)
         settingsPage.continueWithLogout()
-    }
-    
-    func test09() {
-        // Test will choose email login, then tap back button.
-        let splashPage = SplashPageObject()
-        let emailPage = EmailLoginPageObject()
-        
-        splashPage.continueWithEmail()
-        emailPage.backButtonPressed()
-        NSThread.sleepForTimeInterval(1)
-    }
-    
-    func test10() {
-        // Test will choose facebook login then tap back button.
-        let splashPage = SplashPageObject()
-        let facebookPage = FacebookLoginPageObject()
-        
-        splashPage.continueWithEmail()
-        facebookPage.backButtonPressed()
-        NSThread.sleepForTimeInterval(1)
-    
-    }
-    
-    func test11() {
-        
-        // Test is written to FAIL at the 3rd step below.
-        let splash = SplashPageObject()
-        
-        splash.continueWithEmail()
-        NSThread.sleepForTimeInterval(1)
-        
-        // Should fail at next step (button is not present on screen)
-        splash.continueWithEmail()
     }
 }

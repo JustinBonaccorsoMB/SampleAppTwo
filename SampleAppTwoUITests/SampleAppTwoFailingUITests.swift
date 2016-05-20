@@ -20,8 +20,8 @@ class SampleAppTwoFailingUITests: XCTestCase {
         // Navigate to the Email page
         splashPage.continueWithEmail()
         
-        // Will fail at next step (button is not present on screen)
-        splashPage.continueWithEmail()
+        // Test that the email button does not exist in this state
+        XCTAssertFalse(splashPage.emailButton.exists)
     }
     
     // Test will fail after tapping continueWithFacebook.
@@ -33,8 +33,8 @@ class SampleAppTwoFailingUITests: XCTestCase {
         // Navigate to the Email page
         splashPage.continueWithFacebook()
         
-        // Will fail at next step (button is not present on screen)
-        splashPage.continueWithFacebook()
+        // Test that the email button does not exist in this state
+        XCTAssertFalse(splashPage.emailButton.exists)
     }
     
     // Test will fail after email login.
@@ -47,7 +47,7 @@ class SampleAppTwoFailingUITests: XCTestCase {
         let emailPage = splashPage.continueWithEmail()
         
         // Input valid email
-        emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        emailPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         
         // Test that the email button does not exist in this state
         XCTAssertFalse(splashPage.emailButton.exists)
@@ -63,10 +63,10 @@ class SampleAppTwoFailingUITests: XCTestCase {
         let facebookPage = splashPage.continueWithFacebook()
         
         // Input valid credentials
-        facebookPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        facebookPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         
-        // Will fail at next step (button is not present)
-        splashPage.continueWithEmail()
+        // Test that the email button does not exist in this state
+        XCTAssertFalse(splashPage.emailButton.exists)
     }
     
     // Test will continue to loop until device crash
@@ -78,10 +78,9 @@ class SampleAppTwoFailingUITests: XCTestCase {
         // Navigate to the Email page
         let emailPage = splashPage.continueWithEmail()
         
-        // Navigate back to splash screen.
-        emailPage.navigateBack()
     }
 }
+
 
 
 

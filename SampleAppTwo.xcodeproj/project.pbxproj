@@ -19,6 +19,8 @@
 		57034B4B1CEA932A004C9872 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57034B4A1CEA932A004C9872 /* HomeViewController.swift */; };
 		571D4BF01CEE654900A38AA2 /* PageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D4BEF1CEE654900A38AA2 /* PageObject.swift */; };
 		571D4BF51CEF810800A38AA2 /* SampleAppTwoFailingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D4BF41CEF810800A38AA2 /* SampleAppTwoFailingUITests.swift */; };
+		571D4BFE1CEFD12B00A38AA2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D4BFD1CEFD12B00A38AA2 /* UserModel.swift */; };
+		571D4BFF1CEFD12B00A38AA2 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D4BFD1CEFD12B00A38AA2 /* UserModel.swift */; };
 		6C6FB6801CEBD1BF00F218D4 /* FacebookLoginPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6FB67F1CEBD1BF00F218D4 /* FacebookLoginPageObject.swift */; };
 		6C6FB6821CEBD3AB00F218D4 /* EmailLoginPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6FB6811CEBD3AB00F218D4 /* EmailLoginPageObject.swift */; };
 		6C6FB6841CEBD3C000F218D4 /* SplashPageObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6FB6831CEBD3C000F218D4 /* SplashPageObject.swift */; };
@@ -63,6 +65,7 @@
 		57034B4A1CEA932A004C9872 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		571D4BEF1CEE654900A38AA2 /* PageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageObject.swift; sourceTree = "<group>"; };
 		571D4BF41CEF810800A38AA2 /* SampleAppTwoFailingUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleAppTwoFailingUITests.swift; sourceTree = "<group>"; };
+		571D4BFD1CEFD12B00A38AA2 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		6C6FB67F1CEBD1BF00F218D4 /* FacebookLoginPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookLoginPageObject.swift; sourceTree = "<group>"; };
 		6C6FB6811CEBD3AB00F218D4 /* EmailLoginPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailLoginPageObject.swift; sourceTree = "<group>"; };
 		6C6FB6831CEBD3C000F218D4 /* SplashPageObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashPageObject.swift; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				571D4BEF1CEE654900A38AA2 /* PageObject.swift */,
+				571D4BFD1CEFD12B00A38AA2 /* UserModel.swift */,
 				6C6FB67E1CEBD1A200F218D4 /* PageObjects */,
 				57034B361CE68B9D004C9872 /* SampleAppTwoUITests.swift */,
 				571D4BF41CEF810800A38AA2 /* SampleAppTwoFailingUITests.swift */,
@@ -309,6 +313,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57034B471CEA9235004C9872 /* SplashViewController.swift in Sources */,
+				571D4BFE1CEFD12B00A38AA2 /* UserModel.swift in Sources */,
 				57034B191CE68B9D004C9872 /* EmailLoginViewController.swift in Sources */,
 				57034B171CE68B9D004C9872 /* AppDelegate.swift in Sources */,
 				57034B491CEA92F1004C9872 /* FacebookLoginViewController.swift in Sources */,
@@ -336,6 +341,7 @@
 				6C6FB6861CEBD3D300F218D4 /* HomePageObject.swift in Sources */,
 				571D4BF01CEE654900A38AA2 /* PageObject.swift in Sources */,
 				571D4BF51CEF810800A38AA2 /* SampleAppTwoFailingUITests.swift in Sources */,
+				571D4BFF1CEFD12B00A38AA2 /* UserModel.swift in Sources */,
 				6C6FB6801CEBD1BF00F218D4 /* FacebookLoginPageObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

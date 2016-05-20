@@ -1,10 +1,5 @@
 import XCTest
 
-struct UserModel {
-    static let email = "justin.bonaccorso@MB.com"
-    static let password = "Password1234"
-}
-
 class SampleAppTwoUITests: XCTestCase {
     
     override func setUp() {
@@ -73,7 +68,7 @@ class SampleAppTwoUITests: XCTestCase {
         let emailPage = splashPage.continueWithEmail()
         
         // Input valid email
-        let homePage = emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        let homePage = emailPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         
         // Navigate to settings and logout.
         let settingsPage = homePage.navigateToSettingsPage()
@@ -96,7 +91,7 @@ class SampleAppTwoUITests: XCTestCase {
         let facebookPage = splashPage.continueWithFacebook()
         
         // Input valid credentials
-        facebookPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        facebookPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         NSThread.sleepForTimeInterval(1)
     }
     
@@ -116,7 +111,7 @@ class SampleAppTwoUITests: XCTestCase {
         let emailPage = splashPage.continueWithEmail()
         
         // Input valid email
-        emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        emailPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
     }
 
     
@@ -130,7 +125,7 @@ class SampleAppTwoUITests: XCTestCase {
         let emailPage = splashPage.continueWithEmail()
         
         // Type user email
-        emailPage.typeUserName("Justin.Bonaccorso@MB.com")
+        emailPage.typeUserName(UserModel.email)
         
         // Navigate back to splash screen.
         emailPage.navigateBack()
@@ -139,7 +134,7 @@ class SampleAppTwoUITests: XCTestCase {
         let facebookPage = splashPage.continueWithFacebook()
         
         // Input valid credentials
-        let homePage = facebookPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        let homePage = facebookPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         
         // Navigate to settings and logout.
         let settingsPage = homePage.navigateToSettingsPage()
@@ -162,7 +157,7 @@ class SampleAppTwoUITests: XCTestCase {
         let emailPage = splashPage.continueWithEmail()
 
         // Input valid email
-        let homePage = emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        let homePage = emailPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         
         // Navigate to settings and logout.
         let settingsPage = homePage.navigateToSettingsPage()
@@ -179,7 +174,7 @@ class SampleAppTwoUITests: XCTestCase {
         var emailPage = splashPage.continueWithEmail()
         
         // Enter email credentials
-        emailPage.typeUserName("Justin.Bonaccorso@MB.com")
+        emailPage.typeUserName(UserModel.email)
         
         XCUIDevice().pressButton(XCUIDeviceButton.Home)
         XCUIApplication().launch()
@@ -189,7 +184,7 @@ class SampleAppTwoUITests: XCTestCase {
         emailPage = splashPage.continueWithEmail()
         
         // Input valid email
-        let homePage = emailPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        let homePage = emailPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         
         // Navigate to settings and logout.
         let settingsPage = homePage.navigateToSettingsPage()
@@ -214,7 +209,7 @@ class SampleAppTwoUITests: XCTestCase {
         facebookPage = splashPage.continueWithFacebook()
         
         // Input valid credentials
-        let homePage = facebookPage.loginUserWithCredentials("justin.bonaccorso@MB.com", password: "Password1234")
+        let homePage = facebookPage.loginUserWithCredentials(UserModel.email, password: UserModel.password)
         
         // Navigate to settings and logout.
         let settingsPage = homePage.navigateToSettingsPage()

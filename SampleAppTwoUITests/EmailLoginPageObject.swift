@@ -4,10 +4,10 @@ import XCTest
 class EmailLoginPageObject {
 
     // MARK: Identity
-    private let backButton = XCUIApplication().buttons["backButton"]
-    private let userNameTextField = XCUIApplication().textFields["email"]
-    private let passwordTextField = XCUIApplication().textFields["password"]
-    private let loginButton = XCUIApplication().buttons["submit"]
+    let backButton = XCUIApplication().buttons["backButton"]
+    let userNameTextField = XCUIApplication().textFields["email"]
+    let passwordTextField = XCUIApplication().textFields["password"]
+    let loginButton = XCUIApplication().buttons["submit"]
     
     // MARK: User Actions
     

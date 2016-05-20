@@ -6,7 +6,7 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    // MARK: Actions
+    // MARK: User Actions
     @IBAction func logoutPressed(sender: UIButton) {
         self.navigationController?.popToRootViewControllerAnimated(false)
     }

@@ -11,7 +11,7 @@ class SampleAppTwoFailingUITests: XCTestCase {
         super.tearDown()
     }
     
-    // Test is written to fail after tapping continueWithEmail.
+    // Test will cease after tapping continueWithEmail.
     func test11() {
         
         // Initiate the splash screen
@@ -24,7 +24,7 @@ class SampleAppTwoFailingUITests: XCTestCase {
         XCTAssertFalse(splashPage.emailButton.exists)
     }
     
-    // Test will fail after tapping continueWithFacebook.
+    // Test will cease after tapping continueWithFacebook.
     func test12() {
         
         // Initiate the splash screen
@@ -37,7 +37,7 @@ class SampleAppTwoFailingUITests: XCTestCase {
         XCTAssertFalse(splashPage.emailButton.exists)
     }
     
-    // Test will fail after email login.
+    // Test will cease after email login.
     func test13() {
         
         // Initiate the spash screen.
@@ -53,7 +53,7 @@ class SampleAppTwoFailingUITests: XCTestCase {
         XCTAssertFalse(splashPage.emailButton.exists)
     }
     
-    // Test will fail after facebook login.
+    // Test will cease after facebook login.
     func test14() {
         
         // Initiate the splash screen
@@ -69,17 +69,21 @@ class SampleAppTwoFailingUITests: XCTestCase {
         XCTAssertFalse(splashPage.emailButton.exists)
     }
     
-    // Test will continue to loop until device crash
-    func test15() {
-        
-        // Initiate the splash screen
-        let splashPage = SplashPageObject()
-        
-        // Navigate to the Email page
-        let emailPage = splashPage.continueWithEmail()
-        
-    }
+    // Test will continue to loop indefinetely.
+//    func test15() {
+//        
+//        // Initiate the splash screen
+//        let splashPage = SplashPageObject()
+//        
+//        // Navigate to the Email page
+//        let emailPage = splashPage.continueWithEmail()
+//        
+//        while emailPage.backButton.exists || splashPage.emailButton.exists {
+//            emailPage.navigateBack(); splashPage.continueWithEmail()
+//        }
+//    }
 }
+
 
 
 
